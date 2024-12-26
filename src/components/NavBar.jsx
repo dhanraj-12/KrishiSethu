@@ -43,18 +43,18 @@ function NavBar() {
   }, [isHovering]);
 
   return (
-    <div className="flex justify-between items-center p-4 bg-blue-600 bg-opacity-10 fixed top-0 w-full z-40">
+    <div className="flex justify-between items-center p-4 bg-blue-600 fixed top-0 w-full z-40">
       <div className="flex items-center">
-        <h1 className="font-black text-2xl font-sans text-blue-400">KRISHI SETU</h1>
+        <h1 className="font-black text-2xl font-sans text-white">KRISHI SETU</h1>
       </div>
       <div className="flex space-x-5">
         <div className="hover:bg-slate-300 rounded-full">
-          <a href="#Home" className="text-blue-500 hover:text-blue-700 m-5" onClick={handleScroll}>
+          <a href="#Home" className="text-white hover:text-blue-700 m-5" onClick={handleScroll}>
             Home
           </a>
         </div>
         <div className="hover:bg-slate-300 rounded-full">
-          <a href="#About_Us" className="text-blue-500 hover:text-blue-700 m-5" onClick={handleScroll}>
+          <a href="#About_Us" className="text-white hover:text-blue-700 m-5" onClick={handleScroll}>
             About Us
           </a>
         </div>
@@ -63,7 +63,7 @@ function NavBar() {
           onMouseOver={handleMouseOver}
           onMouseLeave={handleMouseLeave}
         >
-          <a href="#Services" className="text-blue-500 hover:text-blue-700 m-5">
+          <a href="#Services" className="text-white hover:text-blue-700 m-5">
             Services
           </a>
           {isHover && (
@@ -84,7 +84,7 @@ function NavBar() {
           )}
         </div>
         <div className="hover:bg-slate-300 rounded-full">
-          <a href="#Articles" className="text-blue-500 hover:text-blue-700 m-5" onClick={handleScroll}>
+          <a href="#Articles" className="text-white hover:text-blue-700 m-5" onClick={handleScroll}>
             Articles
           </a>
         </div>
