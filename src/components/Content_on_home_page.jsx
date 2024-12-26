@@ -8,8 +8,8 @@ function Content_on_home_page() {
 
       <section id='Home' className='mt-0 h-[100vh] w-[100vw]'>
         <div className="text-center">
-          <img src="../assets/Screenshot_from_2024-12-24_09-06-32-removebg-preview.png" alt="" className="ml-auto mr-auto pt-[10vh]" />
-          <img src="../assets/Pasted image.png" alt="" className="ml-auto mr-auto" />
+          <img src="src/assets/Screenshot_from_2024-12-24_09-06-32-removebg-preview.png" alt="" className="ml-auto mr-auto pt-[10vh]" />
+          <img src="src/assets/Pasted image.png" alt="" className="ml-auto mr-auto" />
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus fuga iusto dignissimos eveniet accusantium quis pariatur? Dolorum eaque
             fugiat facere et id dolores unde hic odit in, nihil, ut sunt.
