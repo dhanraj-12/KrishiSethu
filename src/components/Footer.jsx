@@ -16,7 +16,7 @@ function Footer() {
       className="hover:scale-110 transform transition"
     >
       <img
-        src="assets/insta.jpg"
+        src="../assets/insta.jpg"
         alt="Instagram"
         className="w-10 h-10"
       />
@@ -29,7 +29,7 @@ function Footer() {
       className="hover:scale-110 transform transition"
     >
       <img
-        src="assets/360_F_546782398_26V3pL84dJYL7ovgIIIjcDJ7IhPUDxSA.jpg"
+        src="../assets/360_F_546782398_26V3pL84dJYL7ovgIIIjcDJ7IhPUDxSA.jpg"
         alt="LinkedIn"
         className="w-10 h-10"
       />
@@ -42,7 +42,7 @@ function Footer() {
       className="hover:scale-110 transform transition"
     >
       <img
-        src="assets/twitter.jpg"
+        src="../assets/twitter.jpg"
         alt="Twitter"
         className="w-10 h-10"
       />
