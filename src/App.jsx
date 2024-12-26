@@ -2,6 +2,7 @@
 import Login from './components/Login'
 import RequestComp from './components/RequestComp'
 import ProgressBar from './components/ProgressBar'
+import Content_on_home_page from './components/Content_on_home_page'
 import './App.css'
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
   }
   return (
     <>
-    <RequestComp filled = "45" total = "100" />
+    <Content_on_home_page />
     </>
   )
 }
