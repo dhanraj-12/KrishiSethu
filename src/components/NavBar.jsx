@@ -109,7 +109,7 @@ function NavBar() {
       </div>
       {temp && <Form setTemp={setTemp} setIsSubmitted={setIsSubmitted} />}
       {isMenuOpen && (
-        <div className="absolute top-full right-0 bg-gradient-to-b from-blue-500 to-gray-600 to-black rounded-bl-xl w-36 custom:hidden">
+        <div className="absolute top-full right-0 bg-gradient-to-b from-blue-500 to-gray-600  rounded-bl-xl w-36 custom:hidden">
           <ul className="flex flex-col items-center space-y-2 py-4 w-full">
             <li>
               <a href="#Home" className="text-white hover:text-blue-300" onClick={handleScroll}>

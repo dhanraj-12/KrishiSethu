@@ -7,7 +7,7 @@ import './App.css'
 
 function App() {
   const props = {
-    filled : 45,
+    filled : 85,
     total : 100
   }
   return (
