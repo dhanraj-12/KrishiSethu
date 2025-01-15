@@ -1,10 +1,50 @@
 import React from 'react'
 import { useState } from 'react'
+import NavBar from './NavBar'
+import Footer from './Footer'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 function Login () {
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(false);
+  const [username,setUsername] = useState("");
+  const [password,setPassword] = useState("");
+  const navigate = useNavigate();
+  
+  const handleChangeinName = (event) => {
+      setUsername(event.target.value);
+  }
+
+  const handleChangeinPass = (event) => {
+      setPassword(event.target.value);
+  }
+
+  async function handleReq(event) {
+    event.preventDefault(); // Prevents form submission refresh
+    const user = username;
+    const pass = password;
+    if(isLogin) {
+      const response = await axios.post("http://localhost:3000/signin", {
+        "username" : user,
+        "password" : password
+      })
+      localStorage.setItem("token", response.data.token);
+      alert("Signed in successfully");
+      navigate('/home')
+    }else {
+      const response = await axios.post("http://localhost:3000/signup", {
+        "username" : user,
+        "password" : pass
+      })
+      alert("Signed up successfully");
+    }
+  } 
+
+
   return (
     <>
+      <NavBar />
       <div className='flex flex-col justify-center items-center h-screen pt-11'>
         {/* Parent container */}
 
@@ -30,7 +70,7 @@ function Login () {
         <div className='mx-w-2/4 h-auto border border-black bg-indigo-100 rounded-3xl p-10'>
           {/* Heading at the top */}
           <h1 className='text-center text-2xl font-bold mb-6'>
-            Welcome to KrishiSetu
+            Welcome to Taskly
           </h1>
 
           {/* Main Flex Container */}
@@ -47,13 +87,15 @@ function Login () {
                       htmlFor='email'
                       className='block text-sm font-medium text-gray-600 mb-1'
                     >
-                      Mobile Number
+                        Mobile no.
                     </label>
                     <input
-                      type='email'
-                      id='email'
+                      type='tel'
+                      id='tel'
                       className='w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400'
-                      placeholder='Enter your Mobile Number'
+                      placeholder='Enter your Email'
+                      value={username}
+                      onChange={handleChangeinName}
                       required
                     />
                   </div>
@@ -70,11 +112,13 @@ function Login () {
                       id='password'
                       className='w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400'
                       placeholder='Enter your password'
+                      value={password}
+                      onChange={handleChangeinPass}
                       required
                     />
                   </div>
 
-                  {!isLogin && (
+                  {/* {!isLogin && (
                     <div className='mb-4'>
                       <label
                         htmlFor='confirm-password'
@@ -87,16 +131,18 @@ function Login () {
                         id='confirm-password'
                         className='w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400'
                         placeholder='Confirm your password'
+                        
                         required
                       />
                     </div>
-                  )}
+                  )} */}
 
                   <button
                     type='submit'
                     className='w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300'
+                    onClick={handleReq}
                   >
-                    Login
+                    {isLogin ? 'Login' : 'Signup'}
                   </button>
                 </form>
               </div>
@@ -115,6 +161,7 @@ function Login () {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   )
 }
