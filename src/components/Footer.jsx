@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className="h-[50vh] w-[100vw]  bg-blue-600 bg-opacity-10 flex flex-col items-center justify-center space-y-4">
+    <footer className="h-[50vh] w-[100vw]  bg-blue-600 bg-opacity-10 flex flex-col items-center justify-center space-y-4 mb-0 mt-4">
   <div className="text-center">
     <h2 className="font-bold text-3xl">Stay Connected</h2>
     <p className="mt-2 text-lg">Follow us on our social media platforms for updates!</p>
