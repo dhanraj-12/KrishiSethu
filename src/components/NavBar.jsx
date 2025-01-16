@@ -44,7 +44,7 @@ function NavBar() {
   }, [isHovering]);
 
   return (
-    <div className="flex justify-between items-center p-4 bg-sky-200 fixed top-0 w-full z-40">
+    <div className="flex justify-between items-center p-4 bg-sky-500 fixed top-0 w-full z-40">
       <div className="flex items-center">
         <h1 className="font-black text-2xl font-sans text-white">KRISHI SETU</h1>
       </div>
