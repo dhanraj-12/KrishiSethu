@@ -5,8 +5,8 @@ function NavBar() {
   const [temp, setTemp] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isHover, setIsHover] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHovering, setIsHovering] = useState(false); // Track actual hover state
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu
 
   const handleScroll = (e) => {
     e.preventDefault();
@@ -15,14 +15,13 @@ function NavBar() {
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    setIsMenuOpen(false);
   };
 
   const display_form = () => {
     if (isSubmitted) {
-      alert("You have already submitted the form.");
+      alert("You have already submitted the form."); // Alert if form is already submitted
     } else {
-      setTemp(true);
+      setTemp(true); // Show the form modal
     }
   };
 
@@ -40,16 +39,16 @@ function NavBar() {
       const timeout = setTimeout(() => {
         setIsHover(false);
       }, 300);
-      return () => clearTimeout(timeout);
+      return () => clearTimeout(timeout); 
     }
   }, [isHovering]);
 
   return (
-    <div className="flex justify-between items-center p-1 bg-blue-600 fixed top-0 w-full z-40">
+    <div className="flex justify-between items-center p-4 bg-sky-200 fixed top-0 w-full z-40">
       <div className="flex items-center">
         <h1 className="font-black text-2xl font-sans text-white">KRISHI SETU</h1>
       </div>
-      <div className="hidden custom:flex space-x-5">
+      <div className="hidden md:flex space-x-5">
         <div className="hover:bg-slate-300 rounded-full">
           <a href="#Home" className="text-white hover:text-blue-700 m-5" onClick={handleScroll}>
             Home
@@ -69,7 +68,7 @@ function NavBar() {
             Services
           </a>
           {isHover && (
-            <div className="absolute top-full left-0 bg-white shadow-lg rounded mt-2 w-60">
+            <div className="absolute top-full left-0 bg-white shadow-lg rounded mt-2 w-40">
               <ul className="flex flex-col text-left">
                 <li className="hover:bg-blue-100 px-4 py-2">
                   <a href="#Retail" onClick={handleScroll}>
@@ -91,48 +90,58 @@ function NavBar() {
           </a>
         </div>
       </div>
-      <div className="flex items-center custom:hidden space-x-2">
-        <button className="bg-blue-500 text-white py-3 px-4 mx-1 my-2 rounded hover:bg-blue-700" onClick={display_form}>
+      <div className="hidden md:block">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" onClick={display_form}>
           Contact Us
         </button>
+      </div>
+      <div className="md:hidden">
         <button
-          className="text-white text-xl focus:outline-none mx-1 my-2"
+          className="text-white focus:outline-none"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          ☰
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
+            ></path>
+          </svg>
         </button>
       </div>
-      <div className="hidden custom:flex">
-        <button className="bg-blue-500 text-white py-3 px-4 mx-1 my-2 rounded hover:bg-blue-700" onClick={display_form}>
-          Contact Us
-        </button>
-      </div>
-      {temp && <Form setTemp={setTemp} setIsSubmitted={setIsSubmitted} />}
       {isMenuOpen && (
-        <div className="absolute top-full right-0 bg-gradient-to-b from-blue-500 to-gray-600 to-black rounded-bl-xl w-36 custom:hidden">
-          <ul className="flex flex-col items-center space-y-2 py-4 w-full">
-            <li>
-              <a href="#Home" className="text-white hover:text-blue-300" onClick={handleScroll}>
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#About_Us" className="text-white hover:text-blue-300" onClick={handleScroll}>
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="#Services" className="text-white hover:text-blue-300" onClick={handleScroll}>
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#Articles" className="text-white hover:text-blue-300" onClick={handleScroll}>
-                Articles
-              </a>
-            </li>
-          </ul>
+        <div className="md:hidden absolute top-16 left-0 w-full bg-sky-200 z-30">
+          <div className="flex flex-col items-center space-y-4 p-4">
+            <a href="#Home" className="text-white hover:text-blue-700" onClick={handleScroll}>
+              Home
+            </a>
+            <a href="#About_Us" className="text-white hover:text-blue-700" onClick={handleScroll}>
+              About Us
+            </a>
+            <a href="#Services" className="text-white hover:text-blue-700" onClick={handleScroll}>
+              Services
+            </a>
+            <a href="#Articles" className="text-white hover:text-blue-700" onClick={handleScroll}>
+              Articles
+            </a>
+            <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" onClick={display_form}>
+              Contact Us
+            </button>
+          </div>
         </div>
+      )}
+      {temp && (
+        <Form
+          setTemp={setTemp}
+          setIsSubmitted={setIsSubmitted}
+        />
       )}
     </div>
   );
