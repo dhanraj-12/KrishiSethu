@@ -7,6 +7,7 @@ function NavBar() {
   const [isHover, setIsHover] = useState(false);
   const [isHovering, setIsHovering] = useState(false); // Track actual hover state
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false); // State for Services dropdown in mobile
 
   const handleScroll = (e) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ function NavBar() {
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+    setIsMenuOpen(false); // Close the menu after navigation
   };
 
   const display_form = () => {
@@ -39,7 +41,7 @@ function NavBar() {
       const timeout = setTimeout(() => {
         setIsHover(false);
       }, 300);
-      return () => clearTimeout(timeout); 
+      return () => clearTimeout(timeout);
     }
   }, [isHovering]);
 
@@ -125,9 +127,29 @@ function NavBar() {
             <a href="#About_Us" className="text-white hover:text-blue-700" onClick={handleScroll}>
               About Us
             </a>
-            <a href="#Services" className="text-white hover:text-blue-700" onClick={handleScroll}>
-              Services
-            </a>
+            <div className="w-full">
+              <button
+                className="text-white hover:text-blue-700 w-full mx-auto"
+                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+              >
+                Services
+              </button>
+              {isMobileServicesOpen && (
+                  <ul className="space-y-2 mx-auto text-center">
+                    <li>
+                      <a href="#Retail" className="text-white hover:text-blue-700 block" onClick={handleScroll}>
+                        Retail
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#Bulk" className="text-white hover:text-blue-700 block" onClick={handleScroll}>
+                        Bulk
+                      </a>
+                    </li>
+                  </ul>
+                )}
+  
+            </div>
             <a href="#Articles" className="text-white hover:text-blue-700" onClick={handleScroll}>
               Articles
             </a>
