@@ -8,6 +8,7 @@ function NavBar() {
   const [isHover, setIsHover] = useState(false);
   const [isHovering, setIsHovering] = useState(false); // Track actual hover state
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false); // State for Services dropdown in mobile
 
   const handleScroll = (e) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ function NavBar() {
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+    setIsMenuOpen(false); // Close the menu after navigation
   };
 
   const display_form = () => {
@@ -40,7 +42,7 @@ function NavBar() {
       const timeout = setTimeout(() => {
         setIsHover(false);
       }, 300);
-      return () => clearTimeout(timeout); 
+      return () => clearTimeout(timeout);
     }
   }, [isHovering]);
 
