@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Form from "./Form";
 
 function NavBar() {
@@ -44,50 +45,54 @@ function NavBar() {
   }, [isHovering]);
 
   return (
-    <div className="flex justify-between items-center p-4 bg-sky-500 fixed top-0 w-full z-40">
+    <div className="flex justify-between items-center p-4 bg-sky-800 fixed top-0 w-full z-40">
       <div className="flex items-center">
         <h1 className="font-black text-2xl font-sans text-white">KRISHI SETU</h1>
       </div>
       <div className="hidden md:flex space-x-5">
         <div className="hover:bg-slate-300 rounded-full">
-          <a href="#Home" className="text-white hover:text-blue-700 m-5" onClick={handleScroll}>
+          <Link to="/" className="text-white hover:text-blue-700 m-5" >
             Home
-          </a>
+          </Link>
         </div>
-        <div className="hover:bg-slate-300 rounded-full">
-          <a href="#About_Us" className="text-white hover:text-blue-700 m-5" onClick={handleScroll}>
+        <div className="hover:bg-slate-300 rounded-full ">
+          <Link to="/About_Us" className="text-white hover:text-blue-700 m-5" onClick={handleScroll}>
             About Us
-          </a>
+          </Link>
         </div>
         <div
-          className="relative hover:bg-slate-300 rounded-full"
+          className="relative hover:bg-slate-300 rounded-full text-white hover:text-blue-700"
           onMouseOver={handleMouseOver}
           onMouseLeave={handleMouseLeave}
-        >
-          <a href="#Services" className="text-white hover:text-blue-700 m-5">
-            Services
-          </a>
+        > Services
+          {/* <Link to="/Services" className="text-white hover:text-blue-700 m-5"> */}
+          
           {isHover && (
             <div className="absolute top-full left-0 bg-white shadow-lg rounded mt-2 w-40">
               <ul className="flex flex-col text-left">
                 <li className="hover:bg-blue-100 px-4 py-2">
-                  <a href="#Retail" onClick={handleScroll}>
+                  <Link to="/Retail">
                     Retail
-                  </a>
+                  </Link>
                 </li>
                 <li className="hover:bg-blue-100 px-4 py-2">
-                  <a href="#Bulk" onClick={handleScroll}>
+                  <Link to="/Bulk" >
                     Bulk
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
           )}
         </div>
         <div className="hover:bg-slate-300 rounded-full">
-          <a href="#Articles" className="text-white hover:text-blue-700 m-5" onClick={handleScroll}>
+          <Link to="/Articles" className="text-white hover:text-blue-700 m-5" >
             Articles
-          </a>
+          </Link>
+        </div>
+        <div className="hover:bg-slate-300 rounded-full">
+          <Link to="/Profile" className="text-white hover:text-blue-700 m-5">
+            Profile
+          </Link>
         </div>
       </div>
       <div className="hidden md:block">
@@ -119,18 +124,21 @@ function NavBar() {
       {isMenuOpen && (
         <div className="md:hidden absolute top-16 left-0 w-full bg-sky-200 z-30">
           <div className="flex flex-col items-center space-y-4 p-4">
-            <a href="#Home" className="text-white hover:text-blue-700" onClick={handleScroll}>
+            <Link to="/" className="text-white hover:text-blue-700" >
               Home
-            </a>
-            <a href="#About_Us" className="text-white hover:text-blue-700" onClick={handleScroll}>
+            </Link>
+            <Link to="/About_Us" className="text-white hover:text-blue-700" onClick={handleScroll}>
               About Us
-            </a>
-            <a href="#Services" className="text-white hover:text-blue-700" onClick={handleScroll}>
+            </Link>
+            <Link to="/Services" className="text-white hover:text-blue-700" >
               Services
-            </a>
-            <a href="#Articles" className="text-white hover:text-blue-700" onClick={handleScroll}>
+            </Link>
+            <Link to="/Articles" className="text-white hover:text-blue-700" >
               Articles
-            </a>
+            </Link>
+            <Link to="/Profile" className="text-white hover:text-blue-700">
+              Profile
+            </Link>
             <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" onClick={display_form}>
               Contact Us
             </button>
