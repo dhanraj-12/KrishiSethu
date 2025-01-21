@@ -44,7 +44,7 @@ function Login () {
 
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <div className='flex flex-col justify-center items-center h-screen pt-11'>
         {/* Parent container */}
 

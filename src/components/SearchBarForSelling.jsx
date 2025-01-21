@@ -48,7 +48,7 @@ function SearchBarForSelling() {
   };
 
   return (
-    <div className="m-4">
+    <div className="m-4 mt-36">
       {/* Search bar layout */}
       <div className="flex flex-col sm:flex-row justify-between items-center sm:max-w-[70%] mx-auto p-2 bg-gray-500 rounded-lg shadow-lg">
         <input
