@@ -5,7 +5,6 @@ const Profile = () => {
   const [profileData, setProfileData] = useState(null);
 
   useEffect(() => {
-    // Fetch data from the backend
     axios.get("/api/profile")
       .then(response => {
         setProfileData(response.data);
@@ -21,7 +20,6 @@ const Profile = () => {
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 max-w-4xl mx-auto">
-      {/* Header */}
       <div className="flex flex-col md:flex-row items-center justify-between mb-6">
         <img
           className="w-24 h-24 rounded-full mb-4 md:mb-0"
@@ -38,7 +36,6 @@ const Profile = () => {
         </div>
       </div>
 
-      {/* Info */}
       <div className="text-center mb-6">
         <h2 className="text-xl font-bold">{profileData.name}, {profileData.age}</h2>
         <p className="text-gray-600">{profileData.location}</p>
@@ -46,7 +43,6 @@ const Profile = () => {
         <p className="text-gray-600">{profileData.education}</p>
       </div>
 
-      {/* Stats */}
       <div className="flex justify-around text-center">
         <div>
           <p className="text-xl font-bold">{profileData.friends}</p>
